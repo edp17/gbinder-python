@@ -13,6 +13,7 @@ BuildRequires: gcc
 BuildRequires: libgbinder-devel libglibutil-devel pkgconfig
 
 Source: %{name}-%{version}.tar.gz
+Patch0: 0001-cython3-add-noexcept-to-callbacks.patch
 
 %description
 Cython extension module for gbinder
@@ -31,6 +32,7 @@ Python 3 version.
 
 %prep
 %setup -q -n %{name}-%{version}/upstream
+%patch0 -p1
 
 %build
 %{python3} ./setup.py build_ext --inplace --cython
